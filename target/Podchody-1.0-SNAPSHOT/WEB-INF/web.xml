@@ -23,6 +23,14 @@
         <servlet-name>updateTest</servlet-name>
         <servlet-class>com.mycompany.podchody.updateTest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updateGame</servlet-name>
+        <servlet-class>com.mycompany.podchody.updateGame</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>newGame</servlet-name>
+        <servlet-class>com.mycompany.podchody.newGame</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>newTest</servlet-name>
         <url-pattern>/newTest</url-pattern>
@@ -42,6 +50,14 @@
     <servlet-mapping>
         <servlet-name>updateTest</servlet-name>
         <url-pattern>/updateTest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateGame</servlet-name>
+        <url-pattern>/updateGame</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>newGame</servlet-name>
+        <url-pattern>/newGame</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

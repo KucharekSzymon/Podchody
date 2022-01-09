@@ -39,9 +39,11 @@
             </div>
         </a>
         <br>
-        <div class="card bg-info text-white">
-            <div class="card-body">Info card</div>
-        </div>
+        <a href="games.jsp">
+            <div class="card bg-info text-white">
+                <div class="card-body">Games</div>
+            </div>
+        </a>
         <br>
         <div class="card bg-warning text-white">
             <div class="card-body">Warning card</div>
