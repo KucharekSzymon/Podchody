@@ -12,7 +12,7 @@ public class DatabaseConnection {
 		// Initialize all the information regarding
 		// Database Connection
 		String dbDriver = "com.mysql.cj.jdbc.Driver";
-		String dbURL = "jdbc:mysql://localhost:3307/Forum?autoReconnect=true&useSSL=false";
+		String dbURL = "jdbc:mysql://localhost:3307/Podchody?autoReconnect=true&useSSL=false";
 		// Database name to access
 		String dbName = "Podchody";
 		String dbUsername = "root";

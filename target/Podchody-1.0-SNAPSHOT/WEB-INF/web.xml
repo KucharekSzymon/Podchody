@@ -7,9 +7,41 @@
         <servlet-name>newTest</servlet-name>
         <servlet-class>com.mycompany.podchody.newTest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>newQuestion</servlet-name>
+        <servlet-class>com.mycompany.podchody.newQuestion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>removeField</servlet-name>
+        <servlet-class>com.mycompany.podchody.removeField</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateQuestion</servlet-name>
+        <servlet-class>com.mycompany.podchody.updateQuestion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateTest</servlet-name>
+        <servlet-class>com.mycompany.podchody.updateTest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>newTest</servlet-name>
         <url-pattern>/newTest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>newQuestion</servlet-name>
+        <url-pattern>/newQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>removeField</servlet-name>
+        <url-pattern>/removeField</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateQuestion</servlet-name>
+        <url-pattern>/updateQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateTest</servlet-name>
+        <url-pattern>/updateTest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@ include file="/head.jsp" %>
     <title>Configuration panel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,9 +33,11 @@
         </a>
 
         <br>
-        <div class="card bg-success text-white">
-            <div class="card-body">Success card</div>
-        </div>
+        <a href="questions.jsp">
+            <div class="card bg-success text-white">
+                <div class="card-body">Questions</div>
+            </div>
+        </a>
         <br>
         <div class="card bg-info text-white">
             <div class="card-body">Info card</div>

@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 // Import Database Connection Class file
 import com.mycompany.podchody.DatabaseConnection;
 // Servlet Name
-public class newTest extends HttpServlet {
+public class updateTest extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request,
@@ -22,17 +21,20 @@ public class newTest extends HttpServlet {
     {
         try {
             Connection con = DatabaseConnection.initializeDatabase();
-
-            String Name = request.getParameter("Name");
+            String Test_ID = request.getParameter("Test_ID");
             String Point_ID = request.getParameter("Point_ID");
+            String Name = request.getParameter("Name");
             String Treshhold = request.getParameter("Treshhold");
 
             PreparedStatement st = con
-                    .prepareStatement("INSERT INTO Test (`Test_ID`, `Name`, `Point_ID`, `Treshhold`) " +
-                            "VALUES (NULL,?,?,?);");
-            st.setString(1,Name);
-            st.setString(2,Point_ID);
+                    .prepareStatement("UPDATE `Test` SET" +
+                            " `Point_ID` = ?, `Name` = ?, `Treshhold` = ?" +
+                            " WHERE `Test`.`Test_ID` = ?");
+            st.setString(1,Point_ID);
+            st.setString(2,Name);
             st.setString(3,Treshhold);
+            st.setString(4,Test_ID);
+
 
             st.executeUpdate();
             st.close();

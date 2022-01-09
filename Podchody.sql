@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Czas generowania: 02 Sty 2022, 12:45
+-- Czas generowania: 09 Sty 2022, 23:24
 -- Wersja serwera: 5.7.36
 -- Wersja PHP: 7.4.20
 
@@ -42,8 +42,16 @@ CREATE TABLE `Codes` (
 
 CREATE TABLE `Game` (
   `Game_ID` int(11) NOT NULL,
-  `Name` int(11) NOT NULL
+  `Name` varchar(50) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `Game`
+--
+
+INSERT INTO `Game` (`Game_ID`, `Name`) VALUES
+(1, 'Gra PWSZ'),
+(2, 'Gra po Nysie');
 
 -- --------------------------------------------------------
 
@@ -53,11 +61,19 @@ CREATE TABLE `Game` (
 
 CREATE TABLE `Points` (
   `Point_ID` int(11) NOT NULL,
-  `Game_ID` int(11) NOT NULL,
+  `Game_ID` int(11) DEFAULT NULL,
   `Name` varchar(30) COLLATE utf8_polish_ci NOT NULL,
   `Altitude` double NOT NULL,
   `Longitude` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `Points`
+--
+
+INSERT INTO `Points` (`Point_ID`, `Game_ID`, `Name`, `Altitude`, `Longitude`) VALUES
+(1, NULL, 'PWSZ Nysa', 50.474281, 17.3368554),
+(2, NULL, 'Parys Gym Nysa', 50.4665892, 17.3398733);
 
 -- --------------------------------------------------------
 
@@ -67,7 +83,7 @@ CREATE TABLE `Points` (
 
 CREATE TABLE `Questions` (
   `Question_ID` int(11) NOT NULL,
-  `Point_ID` int(11) NOT NULL,
+  `Test_ID` int(11) DEFAULT NULL,
   `Question` text COLLATE utf8_polish_ci NOT NULL,
   `Answer1` text COLLATE utf8_polish_ci,
   `Answer2` text COLLATE utf8_polish_ci,
@@ -75,6 +91,16 @@ CREATE TABLE `Questions` (
   `Answer4` text COLLATE utf8_polish_ci,
   `Correct_Answer` text COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `Questions`
+--
+
+INSERT INTO `Questions` (`Question_ID`, `Test_ID`, `Question`, `Answer1`, `Answer2`, `Answer3`, `Answer4`, `Correct_Answer`) VALUES
+(9, 1, 'How Apple phone is called', 'GTX', 'newPie', 'iPhone', 'Galaxy', '3'),
+(10, 2, 'When Electron tube was invented?', '1883', '1991', '1920', '1900', '1'),
+(11, 1, 'Who popularized AC electricity', 'Isaac Newton', 'Nicola Tesla', 'George Bush', 'Elon Musk', '2'),
+(13, NULL, 'In which country is the silicon valley located?', 'Canada', 'England', 'USA', 'Autralia', '3');
 
 -- --------------------------------------------------------
 
@@ -85,7 +111,7 @@ CREATE TABLE `Questions` (
 CREATE TABLE `Test` (
   `Test_ID` int(11) NOT NULL,
   `Name` varchar(30) COLLATE utf8_polish_ci NOT NULL,
-  `Question_ID` int(11) DEFAULT NULL,
+  `Point_ID` int(11) DEFAULT NULL,
   `Treshhold` int(11) NOT NULL DEFAULT '75'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -93,9 +119,11 @@ CREATE TABLE `Test` (
 -- Zrzut danych tabeli `Test`
 --
 
-INSERT INTO `Test` (`Test_ID`, `Name`, `Question_ID`, `Treshhold`) VALUES
-(1, 'Science Quiz', NULL, 75),
-(2, 'Other', NULL, 50);
+INSERT INTO `Test` (`Test_ID`, `Name`, `Point_ID`, `Treshhold`) VALUES
+(1, 'Science Quiz', 1, 75),
+(2, 'Other', 2, 68),
+(11, 'Fitness test', 2, 80),
+(12, 'Test', NULL, 12);
 
 -- --------------------------------------------------------
 
@@ -126,6 +154,12 @@ INSERT INTO `Users` (`User_ID`, `Group_ID`, `Username`) VALUES
 --
 ALTER TABLE `Codes`
   ADD PRIMARY KEY (`Code_ID`);
+
+--
+-- Indeksy dla tabeli `Game`
+--
+ALTER TABLE `Game`
+  ADD PRIMARY KEY (`Game_ID`);
 
 --
 -- Indeksy dla tabeli `Points`
@@ -162,22 +196,28 @@ ALTER TABLE `Codes`
   MODIFY `Code_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT dla tabeli `Game`
+--
+ALTER TABLE `Game`
+  MODIFY `Game_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT dla tabeli `Points`
 --
 ALTER TABLE `Points`
-  MODIFY `Point_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Point_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `Questions`
 --
 ALTER TABLE `Questions`
-  MODIFY `Question_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Question_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT dla tabeli `Test`
 --
 ALTER TABLE `Test`
-  MODIFY `Test_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Test_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT dla tabeli `Users`

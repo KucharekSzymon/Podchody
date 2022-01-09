@@ -10,14 +10,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@ include file="/head.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
 
     <%
-        Connection con = DatabaseConnection.initializeDatabase();
-
         String queryn = "SELECT * from Podchody.Users";
         PreparedStatement psn = con.prepareStatement(queryn);
         ResultSet rsn = psn.executeQuery();

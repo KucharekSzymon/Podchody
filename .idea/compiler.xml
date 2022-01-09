@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Podchody" options="-endorseddirs &quot;C:\Users\skuch\Desktop\Semestr 5\PUM\Podchody\target/endorsed&quot;" />
+      <module name="Podchody" options="-endorseddirs &quot;E:\Informatyka III rok\Semestr 5\PUM\Podchody\target/endorsed&quot;" />
     </option>
   </component>
 </project>
