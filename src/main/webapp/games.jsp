@@ -28,6 +28,8 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Game Name</th>
+      <th scope="col">Game Start</th>
+      <th scope="col">Game End</th>
       <th scope="col">Edit</th>
       <th scope="col">Remove</th>
 
@@ -42,10 +44,15 @@
       while (rs.next()){
         Integer Game_ID  = rs.getInt("Game_ID");
         String Name = rs.getString("Name");
+        String Start = rs.getString("Start");
+        String End = rs.getString("End");
+
     %>
     <tr>
       <th scope="row"><%=Game_ID%></th>
       <td><%=Name%></td>
+      <td><%=Start%></td>
+      <td><%=End%></td>
 
       <td>
         <form action="/Podchody/newGame.jsp" method="post">

@@ -51,7 +51,7 @@
             </div>
         </a>
         <br>
-        <div class="card bg-danger text-white">
+       <%-- <div class="card bg-danger text-white">
             <div class="card-body">Danger card</div>
         </div>
         <br>
@@ -65,7 +65,7 @@
         <br>
         <div class="card bg-light text-dark">
             <div class="card-body">Light card</div>
-        </div>
+        </div>--%>
     </div>
 </div>
 
