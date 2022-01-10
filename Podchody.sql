@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Czas generowania: 09 Sty 2022, 23:24
+-- Czas generowania: 10 Sty 2022, 00:33
 -- Wersja serwera: 5.7.36
 -- Wersja PHP: 7.4.20
 
@@ -51,7 +51,8 @@ CREATE TABLE `Game` (
 
 INSERT INTO `Game` (`Game_ID`, `Name`) VALUES
 (1, 'Gra PWSZ'),
-(2, 'Gra po Nysie');
+(2, 'Gra po Nysie'),
+(4, 'test2');
 
 -- --------------------------------------------------------
 
@@ -72,8 +73,9 @@ CREATE TABLE `Points` (
 --
 
 INSERT INTO `Points` (`Point_ID`, `Game_ID`, `Name`, `Altitude`, `Longitude`) VALUES
-(1, NULL, 'PWSZ Nysa', 50.474281, 17.3368554),
-(2, NULL, 'Parys Gym Nysa', 50.4665892, 17.3398733);
+(1, 2, 'PWSZ Nysa', 50.474281, 17.3368554),
+(4, 1, 'ROLNIK Nysa', 50.4612734, 17.332085),
+(5, NULL, 'Parys Gym Nysa', 50.4665892, 17.3398733);
 
 -- --------------------------------------------------------
 
@@ -199,13 +201,13 @@ ALTER TABLE `Codes`
 -- AUTO_INCREMENT dla tabeli `Game`
 --
 ALTER TABLE `Game`
-  MODIFY `Game_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Game_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `Points`
 --
 ALTER TABLE `Points`
-  MODIFY `Point_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Point_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `Questions`

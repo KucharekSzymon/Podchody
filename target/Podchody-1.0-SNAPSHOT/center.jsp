@@ -45,9 +45,11 @@
             </div>
         </a>
         <br>
-        <div class="card bg-warning text-white">
-            <div class="card-body">Warning card</div>
-        </div>
+        <a href="points.jsp">
+            <div class="card bg-warning text-white">
+                <div class="card-body">Points</div>
+            </div>
+        </a>
         <br>
         <div class="card bg-danger text-white">
             <div class="card-body">Danger card</div>

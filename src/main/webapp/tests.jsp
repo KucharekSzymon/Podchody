@@ -22,7 +22,7 @@
     <h1> Tests Panel </h1>
     <a href="/Podchody/newTest.jsp"> <button class="btn btn-dark">New test</button></a>
 </div>
-<h2>Tests in games</h2>
+<h2>Tests in points</h2>
 <div style="width: 80%; margin-left: 1%;" class="main">
     <table class="table table-hover">
         <thead>
@@ -76,7 +76,7 @@
         </tbody>
     </table>
 </div>
-<h2>Tests without game</h2>
+<h2>Tests without points</h2>
 <div style="width: 80%; margin-left: 1%;" class="main">
     <table class="table table-hover">
         <thead>

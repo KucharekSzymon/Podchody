@@ -34,6 +34,10 @@ public class removeField extends HttpServlet {
                  st = con
                         .prepareStatement("DELETE FROM " + table + " WHERE " + tableId + " = " + Id + "");
             }
+            else if (table .equals("Points")){
+                st = con
+                        .prepareStatement("DELETE FROM " + table + " WHERE Point_ID = " + Id + "");
+            }
             else {
                 st = con
                         .prepareStatement("DELETE FROM " + table + "s" + " WHERE " + tableId + " = " + Id + "");
@@ -41,6 +45,9 @@ public class removeField extends HttpServlet {
             st.executeUpdate();
             st.close();
             con.close();
+            if  (table .equals("Points"))
+                response.sendRedirect("/Podchody/"+table.toLowerCase()+".jsp");
+            else
                 response.sendRedirect("/Podchody/"+table.toLowerCase()+"s"+".jsp");
             //response.sendRedirect(request.getHeader("referer"));
         }

@@ -15,54 +15,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <title>Tests</title>
+    <title>Points</title>
 </head>
 <body>
 <div class="container header-panel d-flex justify-content-between" >
-    <h1> Tests Panel </h1>
-    <a href="/Podchody/newTest.jsp"> <button class="btn btn-dark">New test</button></a>
+    <h1> Points Panel </h1>
+    <a href="/Podchody/newPoint.jsp"> <button class="btn btn-dark">New point</button></a>
 </div>
-<h2>Tests in points</h2>
+<h2>Points in games</h2>
 <div style="width: 80%; margin-left: 1%;" class="main">
     <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Test Name</th>
             <th scope="col">Point Name</th>
-            <th scope="col">Treshold [%]</th>
+            <th scope="col">Game Name</th>
+            <th scope="col">Altitude</th>
+            <th scope="col">Longitude</th>
             <th scope="col">Edit</th>
             <th scope="col">Remove</th>
         </tr>
         </thead>
         <tbody>
         <%
-            String query  = "SELECT Test.Test_ID,Test.Name,Test.Treshhold,Points.Name as 'pname' from Test INNER join Points on Test.Point_ID = Points.Point_ID order by Test.Point_ID;";
+            String query  = "SELECT Points.Point_ID,Points.Name,Points.Altitude,Points.Longitude,Game.Name as 'gname' from Points INNER join Game on Points.Game_ID = Game.Game_ID order by Game.Game_ID;";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                Integer Test_ID  = rs.getInt("Test_ID");
+                Integer Point_ID  = rs.getInt("Point_ID");
                 String Name = rs.getString("Name");
-                String pname = rs.getString("pname");
-                String Treshhold = rs.getString("Treshhold");
+                String gname = rs.getString("gname");
+                String Altitude = rs.getString("Altitude");
+                String Longitude = rs.getString("Longitude");
         %>
         <tr>
-            <th scope="row"><%=Test_ID%></th>
+            <th scope="row"><%=Point_ID%></th>
             <td><%=Name%></td>
-            <td><%=pname%></td>
-            <td><%=Treshhold%></td>
+            <td><%=gname%></td>
+            <td><%=Altitude%></td>
+            <td><%=Longitude%></td>
 
             <td>
-                <form action="/Podchody/newTest.jsp" method="post">
-                    <input style="display: none;" value="<%=Test_ID%>" name="Id">
+                <form action="/Podchody/newPoint.jsp" method="post">
+                    <input style="display: none;" value="<%=Point_ID%>" name="Id">
                     <button type="submit" class="btn btn-info">Edit</button>
                 </form>
             </td>
             <td>
-                <form action="/Podchody/removeField" method="post">
-                    <input style="display: none;" value="Test" name="table">
-                    <input style="display: none;" value="<%=Test_ID%>" name="Id">
+                <form action="/Podchody/removeField" method="get">
+                    <input style="display: none;" value="Points" name="table">
+                    <input style="display: none;" value="<%=Point_ID%>" name="Id">
                     <button type="submit" class="btn btn-danger">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
@@ -76,43 +79,47 @@
         </tbody>
     </table>
 </div>
-<h2>Tests without points</h2>
+<h2>Points without game</h2>
 <div style="width: 80%; margin-left: 1%;" class="main">
     <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Test Name</th>
-            <th scope="col">Treshold [%]</th>
+            <th scope="col">Point Name</th>
+            <th scope="col">Altitude</th>
+            <th scope="col">Longitude</th>
             <th scope="col">Edit</th>
             <th scope="col">Remove</th>
         </tr>
         </thead>
         <tbody>
         <%
-            String query2  = "SELECT * from Test where Point_ID IS NULL";
+            String query2  = "SELECT * from Points where Game_ID IS NULL";
             PreparedStatement ps2 = con.prepareStatement(query2);
             ResultSet rs2 = ps2.executeQuery();
 
             while (rs2.next()){
-                Integer Test_ID  = rs2.getInt("Test_ID");
+                Integer Test_ID  = rs2.getInt("Point_ID");
                 String Name = rs2.getString("Name");
-                String Treshhold = rs2.getString("Treshhold");
+                String Altitude = rs2.getString("Altitude");
+                String Longitude = rs2.getString("Longitude");
+
         %>
         <tr>
             <th scope="row"><%=Test_ID%></th>
             <td><%=Name%></td>
-            <td><%=Treshhold%></td>
+            <td><%=Altitude%></td>
+            <td><%=Longitude%></td>
 
             <td>
-                <form action="/Podchody/newTest.jsp" method="post">
+                <form action="/Podchody/newPoint.jsp" method="post">
                     <input style="display: none;" value="<%=Test_ID%>" name="Id">
                     <button type="submit" class="btn btn-info">Edit</button>
                 </form>
             </td>
             <td>
                 <form action="/Podchody/removeField" method="post">
-                    <input style="display: none;" value="Test" name="table">
+                    <input style="display: none;" value="Points" name="table">
                     <input style="display: none;" value="<%=Test_ID%>" name="Id">
                     <button type="submit" class="btn btn-danger">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
